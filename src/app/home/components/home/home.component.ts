@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
       this.isLoadingTools = false;
       if (res.tools && res.tools.length > 0) {
         this.toolsList = res.tools as Tool[];
-        console.log(this.toolsList);
       }
     });
   }
@@ -37,7 +36,6 @@ export class HomeComponent implements OnInit {
       data: action === 'edit' ? _.cloneDeep(tool) : null
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
       if (result.event === 'Cancel') {
       } else if (result.event === 'Aceptar') {
         this.toolsList = [];

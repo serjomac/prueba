@@ -46,7 +46,7 @@ export class AddToolComponent implements OnInit {
 
   buildFormAddTool() {
     this.formAddTool = this.formBuilder.group({
-      name: ['', [Validators.minLength(3), Validators.required]],
+      name: ['', [Validators.required]],
       link: ['', Validators.required],
       description: ['', Validators.required]
     });

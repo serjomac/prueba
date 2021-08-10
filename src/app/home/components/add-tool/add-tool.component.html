@@ -1,37 +1,47 @@
 <h3>Agregar nueva herramienta</h3>
 <form [formGroup]="formAddTool" action="" (ngSubmit)="addTool()">
-  <mat-form-field appearance="outline">
-    <mat-label>Nombre</mat-label>
-    <input formControlName="name" matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Link</mat-label>
-    <input formControlName="link" matInput />
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Descripcion</mat-label>
-    <textarea formControlName="description" matInput></textarea>
-  </mat-form-field>
-
-  <mat-form-field class="example-chip-list" appearance="outline">
-    <mat-label>Etiquetas</mat-label>
-    <mat-chip-list #chipList aria-label="Seleccion de etiquetas">
-      <mat-chip
-        *ngFor="let tag of tags"
-        [removable]="removable"
-        (removed)="removeTag(tag)">
-        {{ tag.description | tagformart }}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
-      <input
-        placeholder="Nueva etiqeta"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        [matChipInputAddOnBlur]="addOnBlur"
-        (matChipInputTokenEnd)="addTag($event)"
-      />
-    </mat-chip-list>
-  </mat-form-field>
+  <div class="container-input">
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre*</mat-label>
+      <input formControlName="name" matInput />
+    </mat-form-field>
+    <mat-label class="label-error" *ngIf="!formAddTool.controls.name.valid && formAddTool.controls.name.touched">El campo es requerido</mat-label>
+  </div>
+  <div class="container-input">
+    <mat-form-field appearance="outline">
+      <mat-label>Link*</mat-label>
+      <input formControlName="link" matInput />
+    </mat-form-field>
+    <mat-label class="label-error" *ngIf="!formAddTool.controls.link.valid && formAddTool.controls.link.touched">El campo es requerido</mat-label>
+  </div>
+  <div class="container-input">
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción*</mat-label>
+      <textarea formControlName="description" matInput></textarea>
+    </mat-form-field>
+    <mat-label class="label-error" *ngIf="!formAddTool.controls.description.valid && formAddTool.controls.description.touched">El campo es requerido</mat-label>
+  </div>
+  <div class="container-input">
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Etiquetas</mat-label>
+      <mat-chip-list #chipList aria-label="Seleccion de etiquetas">
+        <mat-chip
+          *ngFor="let tag of tags"
+          [removable]="removable"
+          (removed)="removeTag(tag)">
+          {{ tag.description | tagformart }}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input
+          placeholder="Nueva etiqeta"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addTag($event)"
+        />
+      </mat-chip-list>
+    </mat-form-field>
+  </div>
   <div class="container-buttons">
     <button mat-raised-button type="button" (click)="closeDialog()">Cancelar</button>
     <button mat-raised-button type="submit" [disabled]="isLoadingAddTool" class="button-aceptar">Aceptar</button><mat-spinner *ngIf="isLoadingAddTool"></mat-spinner>

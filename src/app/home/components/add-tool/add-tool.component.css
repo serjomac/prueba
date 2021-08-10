@@ -13,3 +13,16 @@
 mat-spinner {
     zoom: 0.2
   }
+
+  .label-error {
+    margin-left: 10px;
+    font-size: 13px;
+    color: red;
+  }
+  ::ng-deep  .mat-form-field-wrapper {
+      padding-bottom: 0; 
+  }
+
+  .container-input {
+      margin-bottom: 25px
+  }
