@@ -18,6 +18,14 @@ export class ToolsService {
     return this.http.get(this.URL_API + '/tools/getTools', {headers: header});
   }
 
+  serachTool(value, serviceId) {
+    const header = new HttpHeaders().set(
+      'Content-Type', 'application/json'
+    );
+    const params = new HttpParams().set('value', value);
+    return this.http.get(this.URL_API + serviceId, {headers: header, params});
+  }
+
   addTool(tool: any) {
     return this.http.post(this.URL_API + '/tools/addTool', tool);
   }

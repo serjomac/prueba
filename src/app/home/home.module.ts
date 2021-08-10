@@ -8,6 +8,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddToolComponent } from './components/add-tool/add-tool.component';
+import { SnackBarComponent } from '../shared/components/snack-bar/snack-bar.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -20,7 +21,7 @@ import { AddToolComponent } from './components/add-tool/add-tool.component';
     MaterialModule,
     ReactiveFormsModule
   ],
-  entryComponents: [AddToolComponent]
+  entryComponents: [AddToolComponent, SnackBarComponent]
 })
 export class HomeModule {
 

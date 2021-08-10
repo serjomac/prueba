@@ -1,9 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { ToolsService } from "src/app/core/services/tools/tools-service.service";
 import { Tool } from 'src/app/core/models/tool';
 import { MatDialog } from '@angular/material/dialog';
 import { AddToolComponent } from '../add-tool/add-tool.component';
 import * as _ from 'lodash';
+import { MatSnackBar } from '@angular/material';
+import { SnackBarComponent } from 'src/app/shared/components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +15,10 @@ import * as _ from 'lodash';
 export class HomeComponent implements OnInit {
   toolsList: Tool[];
   isLoadingTools = false;
-  constructor(private toolsService: ToolsService, public dialog: MatDialog) {this.toolsList = [];}
+
+  constructor(private toolsService: ToolsService, public dialog: MatDialog, private snackBar: MatSnackBar) {
+    this.toolsList = [];
+  }
 
   ngOnInit() {
     this.getAllTools();
@@ -50,6 +55,35 @@ export class HomeComponent implements OnInit {
         const index = this.toolsList.indexOf(toolSelected);
         this.toolsList.splice(index, 1);
       }
+    });
+  }
+
+  searchTool(quey) {
+    this.isLoadingTools = true;
+    let serviceId;
+    if (quey.typeQuery === 'tag') {
+      serviceId = '/tools/searchToolsByTag';
+    } else {
+      serviceId = '/tools/searchTools';
+    }
+    if (quey.value !== '') {
+      this.toolsService.serachTool(quey.value, serviceId).subscribe((res: any) => {
+        this.isLoadingTools = false;
+        if (res.tools.length > 0) {
+          this.toolsList = res.tools as Tool[];
+        } else {
+          this.openSnackBar();
+        }
+      });
+    } else {
+      this.getAllTools();
+    }
+  }
+
+  openSnackBar() {
+    this.snackBar.openFromComponent(SnackBarComponent, {
+      duration: 2000,
+      data: 'No se encontraron resultados'
     });
   }
 }

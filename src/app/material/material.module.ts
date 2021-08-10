@@ -10,6 +10,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
 @NgModule({
   declarations: [],
   imports: [
@@ -26,7 +29,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDialogModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   exports: [
     MatGridListModule,
@@ -41,7 +45,8 @@ import {MatChipsModule} from '@angular/material/chips';
     MatDialogModule,
     MatChipsModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSnackBarModule
   ]
 })
 export class MaterialModule { }
