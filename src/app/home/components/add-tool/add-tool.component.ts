@@ -35,7 +35,6 @@ export class AddToolComponent implements OnInit {
 
   ngOnInit() {
     if (this.toolSelected != null) {
-      console.log(this.toolSelected);
       this.formAddTool.setValue({
         name: this.toolSelected.title,
         link: this.toolSelected.link,
@@ -83,7 +82,6 @@ export class AddToolComponent implements OnInit {
         description: this.formAddTool.get('description').value,
         tags: listTagsToSend
       };
-      console.log(toolTmp);
     } else {
       const newTagToAdd = [];
       this.tags.forEach(element => {
@@ -95,9 +93,7 @@ export class AddToolComponent implements OnInit {
         description: this.formAddTool.get('description').value,
         tags: newTagToAdd
       };
-      console.log(toolTmp);
     }
-    console.log(this.formAddTool.valid);
     if (this.formAddTool.valid) {
       this.isLoadingAddTool = true;
       this.addOrUpateTool(toolTmp);
@@ -105,23 +101,19 @@ export class AddToolComponent implements OnInit {
   }
 
   addOrUpateTool(toolTmp) {
-    console.log(this.toolSelected)
     if (this.toolSelected != null) {
       this.toolService.updateTool(toolTmp, this.toolSelected.id).subscribe((res: any) => {
         this.isLoadingAddTool = false;
         if (res) {
-          console.log(res);
           this.dialogRef.close({
             event: 'Aceptar'
           });
         }
       });
     } else {
-      console.log('Add tool');
       this.toolService.addTool(toolTmp).subscribe((res: any) => {
         this.isLoadingAddTool = false;
         if (res) {
-          console.log(res);
           this.dialogRef.close({
             event: 'Aceptar'
           });

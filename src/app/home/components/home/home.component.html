@@ -1,3 +1,5 @@
+<!-- <mat-spinner *ngIf="isLoadingTools" class="loagind"></mat-spinner> -->
+<mat-progress-bar mode="indeterminate" *ngIf="isLoadingTools"></mat-progress-bar>
 <mat-grid-list cols="4" rowHeight="200" class="grid-tools">
   <mat-grid-tile *ngFor="let tool of toolsList">
     <mat-card class="example-card">

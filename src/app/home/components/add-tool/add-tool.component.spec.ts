@@ -35,5 +35,4 @@ describe('AddToolComponent', () => {
     expect(control.valid).toBeFalsy();
   });
 
-
 });

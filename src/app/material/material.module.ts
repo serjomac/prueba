@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule, MatListModule, MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material';
+import { MatInputModule, MatListModule, MatProgressSpinner, MatProgressSpinnerModule, MatProgressBarModule } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -25,7 +25,8 @@ import {MatChipsModule} from '@angular/material/chips';
     ScrollingModule,
     MatDialogModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   exports: [
     MatGridListModule,
@@ -39,7 +40,8 @@ import {MatChipsModule} from '@angular/material/chips';
     ScrollingModule,
     MatDialogModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ]
 })
 export class MaterialModule { }

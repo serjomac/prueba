@@ -65,5 +65,9 @@ mat-card::ng-deep.cdk-virtual-scroll-viewport {
     background-color: cadetblue
 }
 
+.loagind {
+    margin: auto
+}
+
 
 

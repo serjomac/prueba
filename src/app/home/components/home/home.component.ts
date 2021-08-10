@@ -12,6 +12,7 @@ import * as _ from 'lodash';
 })
 export class HomeComponent implements OnInit {
   toolsList: Tool[];
+  isLoadingTools = false;
   constructor(private toolsService: ToolsService, public dialog: MatDialog) {this.toolsList = [];}
 
   ngOnInit() {
@@ -19,7 +20,9 @@ export class HomeComponent implements OnInit {
   }
 
   getAllTools() {
+    this.isLoadingTools = true;
     this.toolsService.getAllTools().subscribe((res: any) => {
+      this.isLoadingTools = false;
       if (res.tools && res.tools.length > 0) {
         this.toolsList = res.tools as Tool[];
         console.log(this.toolsList);
@@ -29,7 +32,8 @@ export class HomeComponent implements OnInit {
 
   openDialogAddTool(tool, action) {
     const dialogRef = this.dialog.open(AddToolComponent, {
-      width: '450px',
+      width: '550px',
+      disableClose: true,
       data: action === 'edit' ? _.cloneDeep(tool) : null
     });
     dialogRef.afterClosed().subscribe(result => {
