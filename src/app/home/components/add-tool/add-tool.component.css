@@ -1,0 +1,15 @@
+.mat-form-field {
+    display: block
+}
+.container-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button-aceptar {
+    display: flex;
+    margin-left: 10px
+}
+mat-spinner {
+    zoom: 0.2
+  }

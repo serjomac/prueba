@@ -1,0 +1,69 @@
+.grid-tools {
+    max-height: 100%;
+    overflow: auto;
+    width: 100%
+}
+mat-card {
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 100%;
+    height: 70%;
+}
+mat-card::ng-deep.mat-card-header-text {
+    width: 100%;
+    margin-left: 0;
+    color: cadetblue
+}
+
+mat-card::ng-deep.mat-card-content p {
+    color: grey;
+    size: 15;
+    font-weight: 200
+}
+mat-card::ng-deep.mat-card-actions {
+    display: flex;
+    justify-content: flex-end
+}
+mat-card::ng-deep.mat-list-base {
+    display: flex;
+    height: 40px;
+}
+mat-card::ng-deep.mat-list-item {
+    background-color: lightgray;
+    border-radius: 20px;
+    height: 25px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+mat-card::ng-deep.mat-list-item-content {
+    font-size: 13px;
+    color: gray;
+    padding: 0;
+    justify-content: center;
+}
+mat-card::ng-deep.cdk-virtual-scroll-viewport {
+    height: 40px;
+}
+.icon-add {
+    font-size: 20px;
+    color: cadetblue;
+    cursor: pointer;
+}
+
+.icon-remove {
+    font-size: 20px;
+    color: tomato;
+    cursor: pointer;
+}
+
+.floating-action-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    background-color: cadetblue
+}
+
+
+

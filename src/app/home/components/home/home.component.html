@@ -1,0 +1,24 @@
+<mat-grid-list cols="4" rowHeight="200" class="grid-tools">
+  <mat-grid-tile *ngFor="let tool of toolsList">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ tool.title }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ tool.description }}</p>
+      </mat-card-content>
+      <cdk-virtual-scroll-viewport itemSize="80">
+        <mat-list role="list">
+        <mat-list-item *ngFor="let tag of tool.tags" role="listitem">{{tag.description | tagformart}}</mat-list-item>
+        </mat-list>
+      </cdk-virtual-scroll-viewport>
+      <mat-card-actions>
+        <mat-icon (click)="openDialogAddTool(tool, 'edit')" class="icon-add">edit</mat-icon>
+        <mat-icon (click)="deteleTool(tool)" class="icon-remove">delete</mat-icon>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+<button class="floating-action-button" (click)="openDialogAddTool(null, 'add')" mat-fab aria-label="">
+  <mat-icon>add</mat-icon>
+</button>
